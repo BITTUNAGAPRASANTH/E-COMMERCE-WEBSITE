@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase - Online Shopping</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3916/3916627.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header>
+        <div class="logo">
+            <h1>ShopEase</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="cart-btn" class="fas fa-shopping-cart">
+                <span id="cart-count">0</span>
+            </div>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+    </header>
+
+    <!-- Login Form -->
+    <div class="login-form-container">
+        <div id="close-login-btn" class="fas fa-times"></div>
+        <form id="login-form">
+            <h3>Sign In</h3>
+            <span>Username</span>
+            <input type="text" id="username" class="box" placeholder="Enter your username" required>
+            <span>Password</span>
+            <input type="password" id="password" class="box" placeholder="Enter your password" required>
+            <div class="checkbox">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Remember me</label>
+            </div>
+            <button type="submit" class="btn">Sign In</button>
+            <p>Don't have an account? <a href="#" id="register-link">Create one</a></p>
+        </form>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="register-form-container">
+        <div id="close-register-btn" class="fas fa-times"></div>
+        <form id="register-form">
+            <h3>Create Account</h3>
+            <span>Username</span>
+            <input type="text" id="reg-username" class="box" placeholder="Choose a username" required>
+            <span>Email</span>
+            <input type="email" id="reg-email" class="box" placeholder="Enter your email" required>
+            <span>Password</span>
+            <input type="password" id="reg-password" class="box" placeholder="Create a password" required>
+            <span>Confirm Password</span>
+            <input type="password" id="reg-confirm-password" class="box" placeholder="Confirm your password" required>
+            <button type="submit" class="btn">Register</button>
+            <p>Already have an account? <a href="#" id="login-link">Sign in</a></p>
+        </form>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div class="cart-container">
+        <div id="close-cart-btn" class="fas fa-times"></div>
+        <h3 class="cart-title">Your Cart</h3>
+        <div class="cart-content">
+            <!-- Cart items will be added dynamically -->
+        </div>
+        <div class="cart-total">
+            <h3>Total: ₹<span id="cart-total">0</span></h3>
+            <a href="#" class="btn" id="checkout-btn">Proceed to Payment</a>
+        </div>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="payment-container">
+        <div id="close-payment-btn" class="fas fa-times"></div>
+        <h3 class="payment-title">Payment Details</h3>
+        <form id="payment-form">
+            <div class="payment-methods">
+                <h4>Select Payment Method</h4>
+                <div class="method">
+                    <input type="radio" id="credit-card" name="payment-method" value="credit-card" checked>
+                    <label for="credit-card">Credit/Debit Card</label>
+                </div>
+                <div class="method">
+                    <input type="radio" id="upi" name="payment-method" value="upi">
+                    <label for="upi">UPI</label>
+                </div>
+                <div class="method">
+                    <input type="radio" id="net-banking" name="payment-method" value="net-banking">
+                    <label for="net-banking">Net Banking</label>
+                </div>
+                <div class="method">
+                    <input type="radio" id="cod" name="payment-method" value="cod">
+                    <label for="cod">Cash on Delivery</label>
+                </div>
+            </div>
+
+            <div class="card-details" id="card-details">
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-name">Name on Card</label>
+                    <input type="text" id="card-name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="expiry-date">Expiry Date</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upi-details" id="upi-details" style="display: none;">
+                <div class="form-group">
+                    <label for="upi-id">UPI ID</label>
+                    <input type="text" id="upi-id" placeholder="yourname@upi" required>
+                </div>
+            </div>
+
+            <div class="net-banking-details" id="net-banking-details" style="display: none;">
+                <div class="form-group">
+                    <label for="bank">Select Bank</label>
+                    <select id="bank" required>
+                        <option value="">Select your bank</option>
+                        <option value="sbi">State Bank of India</option>
+                        <option value="hdfc">HDFC Bank</option>
+                        <option value="icici">ICICI Bank</option>
+                        <option value="axis">Axis Bank</option>
+                        <option value="pnb">Punjab National Bank</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <h4>Order Summary</h4>
+                <div class="summary-items" id="payment-summary">
+                    <!-- Order items will be added dynamically -->
+                </div>
+                <div class="summary-total">
+                    <p>Total: <span id="payment-total">₹0</span></p>
+                </div>
+            </div>
+
+            <button type="submit" class="btn" id="pay-now-btn">Pay Now</button>
+        </form>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Welcome to ShopEase</h2>
+            <p>Discover amazing products at unbeatable prices</p>
+            <a href="#products" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h1 class="heading">Our <span>Products</span></h1>
+        <div class="product-container">
+            <!-- Products will be added dynamically -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h1 class="heading">About <span>Us</span></h1>
+        <div class="about-content">
+            <div class="image">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Our Store">
+            </div>
+            <div class="content">
+                <h3>Why Choose Us?</h3>
+                <p>We are committed to providing the best shopping experience with high-quality products, competitive prices, and excellent customer service.</p>
+                <p>Our team works tirelessly to ensure your satisfaction with every purchase.</p>
+                <a href="#products" class="btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h1 class="heading">Contact <span>Us</span></h1>
+        <div class="contact-content">
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Mumbai, India</p>
+                <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                <p><i class="fas fa-envelope"></i> info@shopease.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ShopEase</h3>
+                <p>Your one-stop shop for all your needs.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@shopease.com</p>
+                <p>Phone: +91 9191919191</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ShopEase. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
